@@ -12,12 +12,15 @@ defmodule ShortWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    post "/links", ShortWeb.LinkController, :create
   end
 
   scope "/", ShortWeb do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/:hash", LinkController, :show
   end
 
   # Other scopes may use custom stacks.

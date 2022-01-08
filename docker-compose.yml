@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  app: &app
+    build: .
+    command: mix phx.server
+    depends_on:
+      - postgres
+    networks:
+      default:
+    ports:
+      # Use the --service-ports to publish the port with `docker-compose run`
+      - 8080:4000
+    stdin_open: true
+    tty: true
+    environment:
+      DATABASE_PORT: 5432
+      DATABASE_HOST: postgres
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      PORT: 4000
+
+    volumes:
+      - .:/app:cached
+
+  postgres:
+    image: postgres:14.1-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 54323:5432
+    networks:
+      default:
+        aliases:
+          - postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+volumes:
+  postgres_data:

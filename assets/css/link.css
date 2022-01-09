@@ -1,0 +1,9 @@
+#app .url {
+  width: 60%;
+  margin-right: 10px;
+}
+
+footer {
+  position: fixed;
+  bottom: 20rem;
+}

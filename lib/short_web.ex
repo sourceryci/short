@@ -23,6 +23,7 @@ defmodule ShortWeb do
 
       import Plug.Conn
       alias ShortWeb.Router.Helpers, as: Routes
+      alias ShortWeb.RateLimiter
     end
   end
 

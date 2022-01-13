@@ -63,6 +63,7 @@ defmodule Short.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
+      {:ex_rated, "~> 2.1"},
       {:hammox, "~> 0.5", only: [:test]}
     ]
   end

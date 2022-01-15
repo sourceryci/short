@@ -1,0 +1,53 @@
+# Design
+
+
+Initial mindmap on UI/UX and security can be found
+[here](https://miro.com/app/board/uXjVOXWhwDI=/?invite_link_id=329221243578).
+
+## Setting Up
+
+To initialise the database run:
+
+```
+make setup
+```
+
+
+## Starting the Server
+
+```
+make server
+```
+
+To start the server with an interactive IEx session for debugging:
+
+```
+make console
+```
+
+The server will be exposed on 8080 by default.
+Navigate to http://localhost:8080
+
+## Running the tests
+
+Run:
+
+```
+make test
+```
+
+## Docker
+
+The application is configured so that it can be started through Docker.
+This is for ease of reviewing. Running in Docker is slower though,
+especially on Mac. The provided docker-compose file can be used to start
+a Postgres database which be used even when the tests or the dev server is
+started outside Docker.
+
+Example: Running the tests connected to Docker Postgres
+
+```
+docker-compose up --detach postgres
+
+mix test
+```

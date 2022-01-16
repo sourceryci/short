@@ -1,4 +1,6 @@
 defmodule Short.Links.Link do
+  @moduledoc "The schema module for a Link"
+
   use Ecto.Schema
   import Ecto.Changeset
 

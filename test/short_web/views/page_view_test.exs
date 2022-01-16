@@ -5,6 +5,6 @@ defmodule ShortWeb.PageViewTest do
 
   test "renders index.html" do
     assert render_to_string(ShortWeb.PageView, "index.html", []) =~
-             "<p>The Alchemist's URL shortener of choice</p>"
+             "he Alchemist's URL shortener of choice"
   end
 end

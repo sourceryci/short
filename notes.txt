@@ -12,7 +12,6 @@ To initialise the database run:
 make setup
 ```
 
-
 ## Starting the Server
 
 ```
@@ -51,3 +50,8 @@ docker-compose up --detach postgres
 
 mix test
 ```
+
+## CI
+
+Tests and linting checks are configured to run as GitHub actions.
+See: https://github.com/sourceryci/short/actions

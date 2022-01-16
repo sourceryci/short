@@ -69,6 +69,7 @@ defmodule Short.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:floki, ">= 0.30.0", only: :test},
       {:hammox, "~> 0.5", only: [:test]}
     ]

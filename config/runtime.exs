@@ -65,6 +65,13 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  config :short, ShortWeb.PageController, %{
+    basic_auth: %{
+      username: System.fetch_env!("AUTH_USERNAME"),
+      password: System.fetch_env!("AUTH_PASSWORD")
+    }
+  }
+
   # ## Using releases
   #
   # If you are doing OTP releases, you need to instruct Phoenix

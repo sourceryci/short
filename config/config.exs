@@ -53,6 +53,13 @@ config :tailwind,
 
 config :short, ShortWeb.RateLimiter, defaults: %{interval_seconds: 1, max_requests: 10}
 
+config :short, ShortWeb.PageController, %{
+  basic_auth: %{
+    username: "eugene",
+    password: "that axe"
+  }
+}
+
 config :short, Short.Links.Hash,
   # The number of random bytes to use to generate the hash
   size: 5

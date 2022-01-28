@@ -1,0 +1,1 @@
+call "%~dp0\short" eval Short.Release.migrate

@@ -21,8 +21,13 @@ config :short, ShortWeb.Endpoint,
 config :esbuild,
   version: "0.14.0",
   default: [
-    args:
-      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    args: ~w(js/app.js
+       --bundle
+       --target=es2017
+       --outdir=../priv/static/assets
+       --external:/fonts/*
+       --external:/images/*
+       --loader:.js=jsx),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
@@ -47,6 +52,13 @@ config :tailwind,
   ]
 
 config :short, ShortWeb.RateLimiter, defaults: %{interval_seconds: 1, max_requests: 10}
+
+config :short, ShortWeb.PageController, %{
+  basic_auth: %{
+    username: "eugene",
+    password: "that axe"
+  }
+}
 
 config :short, Short.Links.Hash,
   # The number of random bytes to use to generate the hash

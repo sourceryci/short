@@ -3,6 +3,7 @@ defmodule ShortWeb.LinkController do
 
   alias Short.Links
   alias Short.Links.Link
+  alias Short.Links.ViewsCounter
 
   action_fallback ShortWeb.FallbackController
 
@@ -25,7 +26,8 @@ defmodule ShortWeb.LinkController do
 
   def show(conn, %{"hash" => hash}) do
     case Links.url_for(hash) do
-      url when is_bitstring(url) ->
+      %Link{id: id, url: url} ->
+        ViewsCounter.add(id)
         redirect(conn, external: url)
 
       _ ->

@@ -39,7 +39,11 @@ defmodule ShortWeb.Router do
     pipe_through :browser
     pipe_through :admins_only
 
-    live_dashboard "/dashboard", ecto_repos: [Short.Repo]
+    live_dashboard "/dashboard",
+      ecto_repos: [Short.Repo],
+      additional_pages: [
+        link_views: ShortWeb.LiveDashboard.LinkViewsPage
+      ]
   end
 
   defp auth(conn, _opts) do

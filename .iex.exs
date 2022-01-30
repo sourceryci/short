@@ -7,6 +7,7 @@ alias Short.Repo
 alias Short.Links
 alias Short.Links.{Link, Hash}
 alias ShortWeb.Router.Helpers, as: Routes
+alias Short.Links.ViewsCounter
 
 defmodule H do
   # Example:

@@ -10,7 +10,8 @@ defmodule Short.Application do
     children = [
       # Start the Ecto repository
       Short.Repo,
-      {Short.Links.ViewsCounter, %{name: Short.Links.ViewsCounter, flush_callback: &Short.Links.update_views/2}},
+      {Short.Links.ViewsCounter,
+       %{name: Short.Links.ViewsCounter, flush_callback: &Short.Links.update_views/2}},
       # Start the Telemetry supervisor
       ShortWeb.Telemetry,
       # Start the PubSub system

@@ -5,7 +5,8 @@ defmodule Short.Links.ViewsCounter do
   Flushes the counters periodically.
   """
 
-  @flush_interval 5 # seconds
+  # seconds
+  @flush_interval 5
 
   use GenServer
 
@@ -21,15 +22,21 @@ defmodule Short.Links.ViewsCounter do
   def init(%{flush_callback: flush_callback} = opts) do
     schedule_flush()
 
-    {:ok, %{flush_callback: flush_callback, interval: opts[:interval] || @flush_interval, counters: %{}}}
+    {:ok,
+     %{
+       flush_callback: flush_callback,
+       interval: opts[:interval] || @flush_interval,
+       counters: %{}
+     }}
   end
 
   @impl true
   def handle_cast({:add, id}, %{counters: counters} = state) do
-    {_, updated_counters} = Map.get_and_update(counters, id, fn
-      nil -> {nil, 1}
-      val -> {val, val + 1}
-    end)
+    {_, updated_counters} =
+      Map.get_and_update(counters, id, fn
+        nil -> {nil, 1}
+        val -> {val, val + 1}
+      end)
 
     {:noreply, %{state | counters: updated_counters}}
   end

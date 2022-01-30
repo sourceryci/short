@@ -32,8 +32,9 @@ defmodule Short.Links do
   end
 
   def update_views(id, views) do
-    link = from(l in Link, where: l.id == ^id, lock: "FOR UPDATE NOWAIT")
-    |> Repo.one()
+    link =
+      from(l in Link, where: l.id == ^id, lock: "FOR UPDATE NOWAIT")
+      |> Repo.one()
 
     link
     |> Link.changeset(%{views: link.views + views})
